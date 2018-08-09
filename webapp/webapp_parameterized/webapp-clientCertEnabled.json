@@ -1,0 +1,32 @@
+{
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.Web/sites"
+    },
+    "then": {
+      "effect": "auditIfNotExists",
+      "details": {
+        "type": "Microsoft.Web/sites/config",
+        "existenceCondition": {
+          "anyOf": [
+            {
+              "field": "Microsoft.Web/sites/config/detailedErrorLoggingEnabled",
+              "equals": "[parameters('detailedErrorLoggingEnabled')]"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "parameters": {
+    "detailedErrorLoggingEnabled": {
+      "type": "String",
+      "metadata": {
+        "displayName": "detailedErrorLoggingEnabled",
+        "description": "detailedErrorLoggingEnabled allowed values"
+      }
+    }
+  },
+  "metadata": {}
+}

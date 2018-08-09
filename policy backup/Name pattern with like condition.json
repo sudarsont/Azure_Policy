@@ -1,0 +1,18 @@
+{
+	"if": {
+		"allof": [{
+				"field": "type",
+				"equals": "Microsoft.Storage/storageAccounts"
+			},
+			{
+				"not": {
+					"field": "name",
+					"like": "[parameters('namePattern')]"
+				}
+			}
+		]
+	},
+	"then": {
+		"effect": "audit"
+	}
+}

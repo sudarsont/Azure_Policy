@@ -1,0 +1,25 @@
+{
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Web/sites"
+        },
+        {
+          "not": {
+            "field": "Microsoft.Web/sites/config/netFrameworkVersion",
+            "equals": "v4.0"
+          }
+        }
+      ]
+    },
+    "then": {
+      "effect": "audit"
+    }
+  },
+  "parameters": {},
+  "metadata": {
+    "category": "webapp"
+  }
+}

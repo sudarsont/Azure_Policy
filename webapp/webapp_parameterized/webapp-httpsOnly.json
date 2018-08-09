@@ -1,0 +1,32 @@
+{
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.Web/sites"
+    },
+    "then": {
+      "effect": "auditIfNotExists",
+      "details": {
+        "type": "Microsoft.Web/sites",
+        "existenceCondition": {
+          "anyOf": [
+            {
+              "field": "Microsoft.Web/sites/httpsOnly",
+              "equals": "[parameters('httpsOnly')]"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "parameters": {
+    "httpsOnly": {
+      "type": "String",
+      "metadata": {
+        "displayName": "httpsOnly",
+        "description": "httpsOnly allowed values"
+      }
+    }
+  },
+  "metadata": {}
+}
